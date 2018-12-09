@@ -1,0 +1,76 @@
+# 输入想要的高度
+p = input('你想要的美国国旗高度:')
+p = float(p)#变为浮点型
+# 国旗参数
+a = 1.0
+b = 1.9
+c = 7/13
+d = 1.9*2/5
+e = f = c/10
+g = h = d/12
+k = 0.0616
+l = 1/13
+
+import turtle 
+turtle.setup(width = b*p, height = a*p) #画布大小
+turtle.pencolor(0.698,0.132,0.203) 	#画笔颜色
+turtle.fillcolor(0.698,0.132,0.203)	#填充颜色
+turtle.speed(100)  #设置画笔速度
+
+#画条纹
+for t1 in range(0,7):
+  turtle.penup()
+  turtle.goto(-0.5*b*p,0.5*a*p-t1*2*l*p)#移动到相应初始点
+  #turtle.pendown()
+  
+  turtle.begin_fill()	#填充开始
+  for t2 in range(2):
+    turtle.forward(b*p)
+    turtle.right(90)
+    turtle.forward(l*p)
+    turtle.right(90)
+  turtle.end_fill()     #填充结束
+  
+#画左上角的框
+turtle.pencolor(0.234,0.233,0.430) 	#画笔颜色
+turtle.fillcolor(0.234,0.233,0.430)	#填充颜色
+for k1 in range(1):
+  turtle.penup()
+  turtle.goto(-0.5*b*p,0.5*a*p)
+  turtle.begin_fill()	#填充开始
+  for k2 in range(2):
+    turtle.forward(d*p)
+    turtle.right(90)
+    turtle.forward(c*p)
+    turtle.right(90)
+  turtle.end_fill()     #填充结束
+# 画星星
+turtle.pencolor(1,1,1) 	#画笔颜色
+turtle.fillcolor(1,1,1)	#填充颜色
+
+for x1 in range(1,12):
+  if x1 % 2 != 0 :    
+    for x2 in range (1,6):    #每竖5个
+      turtle.penup()          #抬起画笔
+      turtle.home()           #复位
+      turtle.goto(-0.5*b*p+x1*g*p-0.5*k*p,0.5*a*p-(2*x2-1)*e*p) #移动到坐标
+      turtle.begin_fill()     #填充开始
+      for x3 in range(6):     #画五角星
+        turtle.forward(k*p)
+        turtle.right(144)
+      turtle.end_fill()       #填充结束
+      
+  else :
+    for x4 in range(1,5):
+      turtle.penup()
+      turtle.home()
+      turtle.goto(-0.5*b*p+x1*g*p-0.5*k*p,0.5*a*p-2*x4*e*p)
+      turtle.begin_fill()
+      for x3 in range(6):
+        turtle.forward(k*p)
+        turtle.right(144)
+      turtle.end_fill()   
+
+
+turtle.hideturtle()#隐藏箭头
+
